@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">EMAAR Task</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="country">Country |</string>
+    <string name="loading">Loading....</string>
+    <string name="location">LOCATION</string>
+</resources>
