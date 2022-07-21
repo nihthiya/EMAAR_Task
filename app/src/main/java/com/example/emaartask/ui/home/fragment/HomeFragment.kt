@@ -12,12 +12,9 @@ import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.emaartask.R
 import com.example.emaartask.databinding.FragmentHomeBinding
-import com.example.emaartask.ui.home.activity.HomeActivity
 import com.example.emaartask.ui.home.adapter.UserListAdapter
 import com.example.emaartask.ui.home.viewModel.UserListViewModel
-import com.example.emaartask.ui.userDetails.activity.UserDetailsActivity
 import com.example.emaartask.utils.PaginateListener
-import com.example.emaartask.utils.Utils
 import dagger.hilt.android.AndroidEntryPoint
 
 
@@ -26,6 +23,7 @@ class HomeFragment : Fragment() {
     private lateinit var userListBinding: FragmentHomeBinding
     private val userListViewModel: UserListViewModel by viewModels()
     private lateinit var paginateListener: PaginateListener
+    private var userAdapter: UserListAdapter? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -52,42 +50,40 @@ class HomeFragment : Fragment() {
         userListBinding.lifecycleOwner = this
         userListBinding.userListViewModel = userListViewModel
 
+        userAdapter = UserListAdapter(requireContext())
         val layoutManager = LinearLayoutManager(requireContext())
         userListBinding.rvUserList.layoutManager = layoutManager
+        userListBinding.rvUserList.adapter = userAdapter
 
         paginateListener = PaginateListener(layoutManager) { currentPage, _, _ ->
-            userListBinding.loadMoreLayout.visibility = View.VISIBLE
-            userListViewModel.getAllUsers(requireContext(), currentPage)
+            if (layoutManager.itemCount != 100) {
+                userListBinding.loadMoreLayout.visibility = VISIBLE
+                userListViewModel.getAllUsers(requireContext(), currentPage)
+            }
         }
         userListBinding.rvUserList.addOnScrollListener(paginateListener)
-        userListViewModel.getAllUsers(requireContext(), 1)
+
         userListBinding.shimmerLayout.visibility = VISIBLE
         userListBinding.rvUserList.visibility = GONE
+        userListViewModel.getAllUsers(requireContext(), 1)
+
+
         userListViewModel.localUserData.observe(this.viewLifecycleOwner) { userList ->
 
              userListBinding.rvUserList.also { rv ->
-                    val previousItemCount = 10
+                 val previousItemCount = (rv.adapter as UserListAdapter).itemCount
 
-                    rv.adapter = UserListAdapter(
-                        requireContext(),
-                        userList
-                    )
+                 userAdapter!!.itemList.addAll(userList)
+
+                 rv.adapter?.notifyItemRangeInserted(
+                     previousItemCount,
+                     previousItemCount + 20
+                 )
                  userListBinding.shimmerLayout.visibility = GONE
                  userListBinding.rvUserList.visibility = VISIBLE
-
-//                    rv.adapter!!.notifyItemRangeInserted(
-//                        previousItemCount,
-//                        previousItemCount + userList.results!!.count()
-//                    )
-                    userListBinding.loadMoreLayout.visibility = View.GONE
-                    rv.adapter!!.notifyDataSetChanged()
-//                    previousItemCount = rv.adapter!!.itemCount
-//                    rv.adapter!!.notifyItemRangeInserted(previousItemCount,previousItemCount + productList.data.count())
-//                    userListBinding.loadMoreLayout.visibility = View.GONE
+                 userListBinding.loadMoreLayout.visibility = GONE
 
                 }
-
-//            }
 
 
         }

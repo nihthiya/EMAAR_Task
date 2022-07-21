@@ -6,16 +6,17 @@ import androidx.recyclerview.widget.RecyclerView
 
 typealias OnLoadMore = (currentPage: Int, totalItemCount: Int, view: View) -> Unit
 
+
 class PaginateListener(private val layoutManager: LinearLayoutManager, private val onLoadMore: OnLoadMore) : RecyclerView.OnScrollListener() {
     private var currentPage = 1
     private var loading = true
-    private var previousTotalItemCount = 10
+    private var previousTotalItemCount = 0
     private var startingPageIndex = 1
     private val visibleThreshold = 5
     override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
         super.onScrolled(recyclerView, dx, dy)
         val lastVisibleItemPosition = layoutManager.findLastVisibleItemPosition()
-        val totalItemCount = 100
+        val totalItemCount = layoutManager.itemCount
         if (totalItemCount < previousTotalItemCount) {
             this.currentPage = this.startingPageIndex
             this.previousTotalItemCount = totalItemCount

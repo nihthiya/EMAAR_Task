@@ -40,8 +40,11 @@ data class UserModel(
     @ColumnInfo(name = "City")
     var city: String = "",
 
+    @ColumnInfo(name = "State")
+    var state: String = "",
+
     @ColumnInfo(name = "Postcode")
     var postcode: String = "",
     ) {
-    constructor():this(0,"","","","","","","",0,"","","")
+    constructor():this(0,"","","","","","","",0,"","","","")
 }

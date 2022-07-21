@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <data>
         <variable
@@ -49,11 +50,27 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             android:layout_marginTop="10dp"/>
+
+        <TextView
+            android:id="@+id/tvAge"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/circle"
+            app:layout_constraintBottom_toTopOf="@+id/divider01"
+            app:layout_constraintLeft_toRightOf="@+id/ivAvatar"
+            android:layout_marginStart="-24dp"
+            android:layout_marginBottom="4dp"
+            android:textColor="@color/black"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            android:gravity="center"
+            tools:ignore="MissingConstraints" />
+
         <View
             android:id="@+id/divider01"
             android:layout_width="match_parent"
             android:layout_height="1dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="18dp"
             android:background="@color/black"
             app:layout_constraintTop_toBottomOf="@id/ivAvatar"
             android:layout_marginStart="25dp"

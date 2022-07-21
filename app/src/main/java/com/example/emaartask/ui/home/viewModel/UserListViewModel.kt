@@ -43,15 +43,16 @@ class UserListViewModel @Inject constructor(
                                                     UserModel(
                                                         0,
                                                         iterator.login?.uuid!!,
-                                                        iterator.name?.first!! + " " + iterator.name.last!!,
+                                                        iterator.name?.first!!,
                                                         iterator.email!!,
                                                         iterator.location?.country!!,
                                                         iterator.registered?.date!!,
                                                         iterator.picture?.thumbnail!!,
                                                         iterator.picture.large!!,
-                                                        0,
-                                                        iterator.dob?.date!!,
+                                                        iterator.dob?.age!!,
+                                                        iterator.dob.date!!,
                                                         iterator.location.city!!,
+                                                        iterator.location.state!!,
                                                         iterator.location.postcode!!
                                                     )
                                                 )

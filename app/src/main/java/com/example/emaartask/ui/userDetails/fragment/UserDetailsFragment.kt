@@ -59,9 +59,10 @@ class UserDetailsFragment : Fragment() {
                 )
             userDetailsBinding.tvEmail.text = "Email: " + user.email
             userDetailsBinding.tvDate.text = "Date Joined: " + Utils.formatDate(user.date)
+            userDetailsBinding.tvAge.text = user.age.toString()
             userDetailsBinding.tvDOB.text = "DOB: " + Utils.formatDate(user.dob)
             userDetailsBinding.tvCity.text = "City: " + user.city
-            userDetailsBinding.tvState.text = "State: " + user.country
+            userDetailsBinding.tvState.text = "State: " + user.state
             userDetailsBinding.tvCountry.text = "Country: " + user.country
             userDetailsBinding.tvPostcode.text = "Postcode: " + user.postcode
         }

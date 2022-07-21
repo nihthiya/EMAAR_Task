@@ -11,6 +11,6 @@ import retrofit2.http.Query
 
 interface UserListAPI{
 
-    @GET("/api/?results=10")
+    @GET("/api/?results=20")
     suspend fun getUserListAsync(@Query("page") pageCount: Int): Response<UserListResponse>
 }

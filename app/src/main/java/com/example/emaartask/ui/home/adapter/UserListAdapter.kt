@@ -17,12 +17,16 @@ import com.example.emaartask.utils.Utils
 
 class UserListAdapter() : RecyclerView.Adapter<UserListAdapter.ViewHolder>() {
 
-    private var itemList: List<UserModel?>? = null
+    var itemList: MutableList<UserModel> = mutableListOf()
+        set(value) {
+            field.clear()
+            field.addAll(value)
+            notifyDataSetChanged()
+        }
     private lateinit var context: Context
 
-    constructor(context: Context, productList: List<UserModel?>?) : this() {
+    constructor(context: Context) : this() {
         this.context = context
-        this.itemList = productList
     }
 
     override fun getItemCount() = itemList!!.size
