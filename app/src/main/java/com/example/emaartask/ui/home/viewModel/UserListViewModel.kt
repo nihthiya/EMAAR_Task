@@ -22,7 +22,7 @@ class UserListViewModel @Inject constructor(
     private val userListRepository: UserListRepository
 ) : ViewModel() {
     val localUserData = MutableLiveData<List<UserModel>>()
-    var userList = ArrayList<UserModel>()
+    private var userList = ArrayList<UserModel>()
     val errorResponse = MutableLiveData<FailureResponse>()
 
     fun getAllUsers(context: Context, pageCount: Int) {

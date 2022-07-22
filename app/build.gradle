@@ -80,19 +80,19 @@ dependencies {
     implementation "androidx.lifecycle:lifecycle-extensions:2.2.0"
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.0-alpha01"
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.6.10"
-//    /**Hilt*/
+    //Hilt
     implementation("com.google.dagger:hilt-android:2.38.1")
     kapt("com.google.dagger:hilt-android-compiler:2.38.1")
 
-    /**Material Style Progress(Need to change)*/
+    // Progress
     implementation 'com.pnikosis:materialish-progress:1.7'
 
     // Room components
-    implementation "androidx.room:room-runtime:2.3.0"
-    implementation "androidx.room:room-ktx:2.3.0"
+    implementation "androidx.room:room-runtime:2.4.2"
+    implementation "androidx.room:room-ktx:2.4.2"
     annotationProcessor  'android.arch.persistence.room:compiler:1.1.1'
-    androidTestImplementation "androidx.room:room-testing:2.3.0"
-    kapt "androidx.room:room-compiler:2.3.0"
+    androidTestImplementation "androidx.room:room-testing:2.4.2"
+    kapt "androidx.room:room-compiler:2.4.2"
 
     //Shimmer effect
     implementation 'com.facebook.shimmer:shimmer:0.5.0'
