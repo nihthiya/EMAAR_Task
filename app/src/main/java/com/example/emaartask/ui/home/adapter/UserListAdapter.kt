@@ -7,9 +7,7 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.bumptech.glide.util.Util
 import com.example.emaartask.R
-import com.example.emaartask.data.model.Response.ResultsItem
 import com.example.emaartask.database.model.UserModel
 import com.example.emaartask.databinding.ItemUserListBinding
 import com.example.emaartask.ui.userDetails.activity.UserDetailsActivity
@@ -29,7 +27,7 @@ class UserListAdapter() : RecyclerView.Adapter<UserListAdapter.ViewHolder>() {
         this.context = context
     }
 
-    override fun getItemCount() = itemList!!.size
+    override fun getItemCount() = itemList.size
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) =
         ViewHolder(
@@ -42,9 +40,9 @@ class UserListAdapter() : RecyclerView.Adapter<UserListAdapter.ViewHolder>() {
         )
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val item = itemList!![position]
+        val item = itemList[position]
         try {
-            Glide.with(context).load(item!!.avatar).into(holder.itemUserListBinding.ivAvatar)
+            Glide.with(context).load(item.avatar).into(holder.itemUserListBinding.ivAvatar)
 
 
             holder.itemUserListBinding.tvName.text = item.name
@@ -60,7 +58,7 @@ class UserListAdapter() : RecyclerView.Adapter<UserListAdapter.ViewHolder>() {
         holder.itemView.setOnClickListener {
             val intent = Intent(context, UserDetailsActivity::class.java)
             intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
-            intent.putExtra("userId", item!!.userUUID)
+            intent.putExtra("userId", item.userUUID)
             context.startActivity(intent)
         }
 

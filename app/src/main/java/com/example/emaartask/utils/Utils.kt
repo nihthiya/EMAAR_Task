@@ -12,7 +12,7 @@ class Utils {
         fun formatDate(currentDate: String?): String {
             val formattedDate: String
             var spf = SimpleDateFormat("yyyy-M-dd'T'HH:mm:ss", Locale.US)
-            val newDate: Date = spf.parse(currentDate)
+            val newDate: Date = spf.parse(currentDate!!)!!
             spf = SimpleDateFormat("MMMM dd, yyyy", Locale.US)
             formattedDate = spf.format(newDate)
             return formattedDate

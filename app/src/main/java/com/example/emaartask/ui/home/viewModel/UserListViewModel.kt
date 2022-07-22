@@ -1,16 +1,16 @@
 package com.example.emaartask.ui.home.viewModel
 
 import android.content.Context
-import android.util.Log
 import android.widget.Toast
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.emaartask.Application
-import com.example.emaartask.data.apiServices.UserListAPI
-import com.example.emaartask.data.model.Response.UserListResponse
+import com.example.emaartask.R
+import com.example.emaartask.data.model.response.FailureResponse
 import com.example.emaartask.data.repository.UserListRepository
 import com.example.emaartask.database.model.UserModel
+import com.example.emaartask.utils.ErrorResponseUtils
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -19,12 +19,11 @@ import javax.inject.Inject
 
 @HiltViewModel
 class UserListViewModel @Inject constructor(
-    private val userListRepository: UserListRepository,
-    private val userListAPI: UserListAPI
+    private val userListRepository: UserListRepository
 ) : ViewModel() {
     val localUserData = MutableLiveData<List<UserModel>>()
     var userList = ArrayList<UserModel>()
-    var isFirstEntry = true
+    val errorResponse = MutableLiveData<FailureResponse>()
 
     fun getAllUsers(context: Context, pageCount: Int) {
 
@@ -59,18 +58,15 @@ class UserListViewModel @Inject constructor(
                                             }
                                         }
                                     }
-
-                                    try {
-                                        userListRepository.insertUser(userList)
-                                    } catch (e: Exception) {
-                                        e.printStackTrace()
-                                    }
+                                    insertIntoDB(userList)
                                     getUserFromDB()
                                 }
                             }
 
                         } catch (throwable: Throwable) {
-
+                            ErrorResponseUtils.error(throwable) {
+                                errorResponse.postValue(it)
+                            }
                         }
 
                     }
@@ -79,9 +75,21 @@ class UserListViewModel @Inject constructor(
             }
             else -> Toast.makeText(
                 context,
-                "",
+                context.resources.getString(R.string.connection),
                 Toast.LENGTH_LONG
             ).show()
+        }
+    }
+
+    private fun insertIntoDB(userList: ArrayList<UserModel>) {
+        viewModelScope.launch {
+            withContext(Dispatchers.IO) {
+                try {
+                    userListRepository.insertUser(userList)
+                } catch (e: Exception) {
+                    e.printStackTrace()
+                }
+            }
         }
     }
 

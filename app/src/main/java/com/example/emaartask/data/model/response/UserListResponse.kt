@@ -1,4 +1,4 @@
-package com.example.emaartask.data.model.Response
+package com.example.emaartask.data.model.response
 
 import com.google.gson.annotations.SerializedName
 

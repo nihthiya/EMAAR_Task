@@ -10,13 +10,13 @@ class UserListRepository @Inject constructor(private val apiHelper: UserListApiH
 
     suspend fun getUserList(pageCount: Int) = apiHelper.getUserListAsync(pageCount)
 
-    suspend fun insertUser(user: List<UserModel>) = userDAO.addUser(user)
+    fun insertUser(user: List<UserModel>) = userDAO.addUser(user)
 
-    suspend fun getUserFromDB() = userDAO.getUsers()
+    fun getUserFromDB() = userDAO.getUsers()
 
-    suspend fun getUserByID(userID: String) = userDAO.getUserByID(userID)
+    fun getUserByID(userID: String) = userDAO.getUserByID(userID)
 
-    suspend fun deleteAll() = userDAO.deleteAll()
+    fun deleteAll() = userDAO.deleteAll()
 
 
 }

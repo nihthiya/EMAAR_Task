@@ -1,7 +1,16 @@
 <resources>
-    <string name="app_name">EMAAR Task</string>
+    <string name="app_name">Task</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="country">Country |</string>
     <string name="loading">Loading....</string>
     <string name="location">LOCATION</string>
+    <string name="connection">Network connection is unstable</string>
+    <string name="error">Something Went Wrong</string>
+    <string name="email">Email: </string>
+    <string name="date">Date Joined: </string>
+    <string name="dob">DOB: </string>
+    <string name="city">City: </string>
+    <string name="state">State: </string>
+    <string name="user_country">Country: </string>
+    <string name="postcode">Postcode: </string>
 </resources>

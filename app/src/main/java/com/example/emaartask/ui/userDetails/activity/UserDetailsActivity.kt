@@ -1,7 +1,7 @@
 package com.example.emaartask.ui.userDetails.activity
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import com.example.emaartask.R
 import dagger.hilt.android.AndroidEntryPoint
 

@@ -1,11 +1,8 @@
 package com.example.emaartask.data.apiServices
 
-import com.example.emaartask.data.model.Response.UserListResponse
-import kotlinx.coroutines.Deferred
+import com.example.emaartask.data.model.response.UserListResponse
 import retrofit2.Response
-import retrofit2.http.Body
 import retrofit2.http.GET
-import retrofit2.http.POST
 import retrofit2.http.Query
 
 

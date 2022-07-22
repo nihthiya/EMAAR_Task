@@ -6,6 +6,7 @@ import android.view.View
 import android.view.View.GONE
 import android.view.View.VISIBLE
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -84,9 +85,11 @@ class HomeFragment : Fragment() {
                  userListBinding.loadMoreLayout.visibility = GONE
 
                 }
-
-
         }
+
+        userListViewModel.errorResponse.observe(this.viewLifecycleOwner, {
+            Toast.makeText(requireContext(), it.message, Toast.LENGTH_SHORT).show()
+        })
 
     }
 

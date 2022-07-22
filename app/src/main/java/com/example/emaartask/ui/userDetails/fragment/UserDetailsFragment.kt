@@ -1,5 +1,6 @@
 package com.example.emaartask.ui.userDetails.fragment
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -41,6 +42,7 @@ class UserDetailsFragment : Fragment() {
         initUI()
     }
 
+    @SuppressLint("SetTextI18n")
     private fun initUI() {
         userDetailsBinding.lifecycleOwner = this
         userDetailsBinding.userDetailsViewModel = userDetailsViewModel
@@ -57,14 +59,14 @@ class UserDetailsFragment : Fragment() {
                 userDetailsBinding.tvToolbarTitle,
                 user.name
                 )
-            userDetailsBinding.tvEmail.text = "Email: " + user.email
-            userDetailsBinding.tvDate.text = "Date Joined: " + Utils.formatDate(user.date)
+            userDetailsBinding.tvEmail.text = resources.getString(R.string.email) + user.email
+            userDetailsBinding.tvDate.text = resources.getString(R.string.date) + Utils.formatDate(user.date)
             userDetailsBinding.tvAge.text = user.age.toString()
-            userDetailsBinding.tvDOB.text = "DOB: " + Utils.formatDate(user.dob)
-            userDetailsBinding.tvCity.text = "City: " + user.city
-            userDetailsBinding.tvState.text = "State: " + user.state
-            userDetailsBinding.tvCountry.text = "Country: " + user.country
-            userDetailsBinding.tvPostcode.text = "Postcode: " + user.postcode
+            userDetailsBinding.tvDOB.text = resources.getString(R.string.dob) + Utils.formatDate(user.dob)
+            userDetailsBinding.tvCity.text = resources.getString(R.string.city)+ user.city
+            userDetailsBinding.tvState.text = resources.getString(R.string.state) + user.state
+            userDetailsBinding.tvCountry.text = resources.getString(R.string.user_country) + user.country
+            userDetailsBinding.tvPostcode.text = resources.getString(R.string.postcode) + user.postcode
         }
     }
 
