@@ -1,4 +1,4 @@
-package com.example.emaartask
+package com.example.emaartask.utils
 
 import android.content.Context
 import android.net.ConnectivityManager

@@ -5,7 +5,7 @@ import android.widget.Toast
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.emaartask.Application
+import com.example.emaartask.utils.Application
 import com.example.emaartask.R
 import com.example.emaartask.data.model.response.FailureResponse
 import com.example.emaartask.data.repository.UserListRepository
